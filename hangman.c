@@ -64,6 +64,7 @@ void playGame() {
     guessedWord[wordLength] = '\0';
 
     printf("Welcome to Hangman!\n");
+    printf("Type '!' at any time to quit the game immediately.\n");
 
     while (attempts < MAX_ATTEMPTS) {
         displayHangman(attempts);
@@ -73,6 +74,7 @@ void playGame() {
         if (attempts == MAX_ATTEMPTS - 2) {
             printf("Hint: %s\n", hint);
         }
+
 
         char guess;
         printf("Enter a letter: ");
@@ -84,6 +86,12 @@ void playGame() {
                 guessedWord[i] = guess;
                 found = 1;
             }
+        }
+
+          // Quit condition
+        if (guess == '!') {
+            printf("You chose to quit the game. Goodbye!\n");
+            return;
         }
 
         if (!found) {
@@ -113,3 +121,4 @@ int main() {
         printf("Thank you for playing Hangman!\n");
         return 0;
 }
+
